@@ -1,6 +1,6 @@
 var game = document.querySelector('#game');
 var ctx = game.getContext('2d');
-game.height = height = (window.innerHeight - 30); 
+game.height = height = (window.innerHeight - 5); 
 game.width = width = window.innerWidth;
 var objects = new Array();
 drawThings();
@@ -8,9 +8,14 @@ drawThings();
 function drawThings() {
 	ctx.clearRect(0, 0, width, height);
 	for (i=0; i<objects.length; i++) {
-		ctx.fillStyle = "#ff0000";
-		objects[i].x--;
-		ctx.fillRect(objects[i].x, objects[i].y, 50, 50);
+		if (objects[i] != null) {
+			ctx.fillStyle = "#ff0000";
+			objects[i].x--;
+			ctx.fillRect(objects[i].x, objects[i].y, 50, 50);
+			if (objects[i].x < -50) {
+				delete objects[i];
+			}
+		}
 	}
 	if (getRandomBool()) {
 		i = objects.length;
@@ -29,7 +34,7 @@ function getRandomInt(min, max) {
 }
 
 function getRandomBool() {
-	if (getRandomInt(0, 50) == 1) {
+	if (getRandomInt(0, (40000 /height)) == 1) {
 		return true;
 	} else {
 		return false;
