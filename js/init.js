@@ -6,6 +6,8 @@
 })();
 
 var userX, userY;
+var posX = 0;
+var posY = 0;
 var canvas = document.querySelector('#game');
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
@@ -28,9 +30,15 @@ Leap.loop(function(frame, done) {
 	done(); // if you don't invoke this, you won't get more events
 });
 
+canvas.addEventListener('mousemove', function(e) {
+	userX = e.clientX;
+	userY = e.clientY;
+});
+
 function logic()  {
 	// LOGIC GOES HERE
-
+	posX = lerp(posX, userX, 0.5);
+	posY = lerp(posY, userY, 0.5);
 	requestAnimationFrame(render);
 }
 
@@ -38,7 +46,12 @@ function render() {
 	// RENDERING GOES HERE
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.fillStyle = "#FF0000";
-	ctx.fillRect(userX + window.innerWidth/2, userY + window.innerHeight, 10, 10);
+	ctx.fillRect(posX + window.innerWidth/2, posY + window.innerHeight, 10, 10);
+}
+
+
+function lerp(start, end, speed) {
+	return start + (end - start) * speed;
 }
 
 setInterval(logic, 1000/30);
