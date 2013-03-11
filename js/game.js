@@ -1,31 +1,39 @@
 var game = document.querySelector('#game');
 var ctx = game.getContext('2d');
-var y = 10;
-var x = (window.innerWidth + 30);
 game.height = height = (window.innerHeight - 30); 
 game.width = width = window.innerWidth;
-var y = 10;
-var x = (width + 100);
-var x2 = (width + 10);
-var y2 = (height - 60);
-
+var objects = new Array();
 drawThings();
 
 function drawThings() {
 	ctx.clearRect(0, 0, width, height);
-	--x;
-	--x2;
-	if ((y2 - y) < 0 ) {
-		ctx.fillStyle = "#0000CC";
-	} else {
+	for (i=0; i<objects.length; i++) {
 		ctx.fillStyle = "#ff0000";
+		objects[i].x--;
+		ctx.fillRect(objects[i].x, objects[i].y, 50, 50);
 	}
-	ctx.fillRect(x, y, 50, 50);
-	ctx.fillRect(x2, y2, 50, 50);
+	if (getRandomBool()) {
+		i = objects.length;
+		objects[i] = new Object();
+		objects[i].x = (width + 10);
+		objects[i].y = getRandomInt(0, height);
+	}	
 }
 
 function logic () {
 	requestAnimationFrame(drawThings);
+}
+
+function getRandomInt(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getRandomBool() {
+	if (getRandomInt(0, 50) == 1) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 requestAnimationFrame(drawThings);
