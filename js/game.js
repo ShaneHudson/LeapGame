@@ -6,14 +6,16 @@ game.width = height = window.innerWidth;
 drawThings();
 
 function drawThings() {
+	ctx.clearRect(x, y, 50, 50);
+	++x;
+	++y;
 	ctx.fillStyle = "#ff0000";
 	ctx.fillRect(x, y, 50, 50);
 }
 
 function logic () {
-	++x;
 	if (x < game.width - width) requestAnimationFrame(drawThings);
 }
 
 requestAnimationFrame(drawThings);
-setInterval(logic, 1000/60);
+setInterval(logic, 1000/30);
