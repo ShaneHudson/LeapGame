@@ -1,6 +1,6 @@
 var game = document.querySelector('#game');
 var ctx = game.getContext('2d');
-game.height = height = (window.innerHeight - 5); 
+game.height = height = (window.innerHeight - 10); 
 game.width = width = window.innerWidth;
 var objects = new Array();
 drawThings();
