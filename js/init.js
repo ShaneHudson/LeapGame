@@ -14,7 +14,10 @@ var canvas = document.querySelector('#game');
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 var ctx = canvas.getContext('2d');
+var start = new Date().getTime(),
+    elapsed = '0.0';
 var game = new GameLogic();
+var speed = 30;
 
 var Init = (function() {
 
@@ -45,6 +48,7 @@ var Init = (function() {
 		posX = lerp(posX, userX, 0.5);
 		posY = lerp(posY, userY, 0.5);
 		requestAnimationFrame(render);
+		speed++;
 	}
 
 	function render() {
@@ -59,6 +63,14 @@ var Init = (function() {
 	function lerp(start, end, speed) {
 		return start + (end - start) * speed;
 	}
+	
+	window.setInterval(function()
+	{
+		var time = new Date().getTime() - start;
+		elapsed = Math.floor(time / 100) / 10;
+		if(Math.round(elapsed) == elapsed) { elapsed += '.0'; }
+		document.getElementById('timer').innerHTML = elapsed;
+	}, 100);
 
-	setInterval(logic, 1000/30);
+	setInterval(logic, 1000/speed);
 })();
