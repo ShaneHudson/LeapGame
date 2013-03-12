@@ -1,6 +1,5 @@
 var Player = (function() {
-	var controllerOptions = {enableGestures: false};
-	Leap.loop(controllerOptions, function(frame, done) {
+	Leap.loop(function(frame, done) {
 		var pointer = frame.pointables[0];
 		if (frame.pointables.length > 0) {
 			for (var i = 0; i < frame.pointables.length; i++) {
@@ -17,12 +16,10 @@ var Player = (function() {
 		done(); // if you don't invoke this, you won't get more events
 	});
 
-		canvas.addEventListener('mousemove', function(e) {
-			userX = e.clientX;
-			userY = e.clientY;
-		});
-
-
+	canvas.addEventListener('mousemove', function(e) {
+		userX = e.clientX;
+		userY = e.clientY;
+	});
 
 	function logic()  {
 		//posX = lerp(posX, userX, 0.1);
@@ -43,7 +40,6 @@ var Player = (function() {
 	return {
 		draw : draw,
 		logic : logic,
-		controllerOptions : controllerOptions,
 		pos : pos
 	}
 
