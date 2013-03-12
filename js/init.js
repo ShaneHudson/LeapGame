@@ -33,6 +33,6 @@ var Init = (function() {
 		map.draw();
 		player.draw();
 	}
-	
-	setInterval(logic, 1000/30);
+	setInterval(logic, 1000/30);	
+
 })();
