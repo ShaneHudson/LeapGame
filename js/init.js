@@ -37,9 +37,7 @@ var Init = (function() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		map.draw();
 		player.draw();
-	}
-
-	setInterval(logic, 1000/30);	
+	}	
 
 	window.setInterval(function()
 	{
