@@ -1,3 +1,4 @@
-function lerp(start, end, speed) {
-	return start + (end - start) * speed;
+function lerp(a, b, f)
+{
+    return a + f * (b - a);
 }
