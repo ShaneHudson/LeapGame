@@ -21,9 +21,9 @@ var Map = (function() {
 	}
 	
 	function collide(x, y) {
-		for (i-0; i<objects.length; i++) {
+		for (i=0; i<objects.length; i++) {
 			if (objects[i] != null) {
-				if (objects[i].x = x && objects[i].y = y) {
+				if ((objects[i].x < x && (objects[i].x + 50) > x) && (objects[i].y < y && (objects[i].y + 50) > y)) {
 					return true;
 					break;
 				}

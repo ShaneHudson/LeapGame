@@ -28,6 +28,7 @@ var Init = (function() {
 	function logic()  {
 		// LOGIC GOES HERE
 		player.logic();
+		if (map.collide(player.pos().posX, player.pos().posY)) document.title = 'FUCK WE ARE DEAD';
 		requestAnimationFrame(render);
 		speed++;
 	}
