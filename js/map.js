@@ -1,4 +1,4 @@
-var GameLogic = (function() {
+var Map = (function() {
 	var objects = new Array();
 
 	function draw() {
