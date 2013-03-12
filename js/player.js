@@ -36,10 +36,15 @@ var Player = (function() {
 		ctx.fillStyle = "#00FF00";
 		ctx.fillRect(posX, posY, 10, 10);
 	}
+	
+	function pos() {
+		return {posX : posX, posY : posY};
+	}
 
 	return {
 		draw : draw,
-		logic : logic
+		logic : logic,
+		pos : pos
 	}
 
 });
