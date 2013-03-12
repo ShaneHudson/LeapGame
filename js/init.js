@@ -10,9 +10,13 @@
 var canvas = document.querySelector('#game');
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
+
 var userX, userY;
 var posX = 0;
 var posY = 0;
+var start = new Date().getTime(),
+    elapsed = '0.0';
+var speed = 30;
 
 
 var ctx = canvas.getContext('2d');
@@ -25,6 +29,7 @@ var Init = (function() {
 		// LOGIC GOES HERE
 		player.logic();
 		requestAnimationFrame(render);
+		speed++;
 	}
 
 	function render() {
@@ -33,6 +38,16 @@ var Init = (function() {
 		map.draw();
 		player.draw();
 	}
+
 	setInterval(logic, 1000/30);	
 
+	window.setInterval(function()
+	{
+		var time = new Date().getTime() - start;
+		elapsed = Math.floor(time / 100) / 10;
+		if(Math.round(elapsed) == elapsed) { elapsed += '.0'; }
+		document.getElementById('timer').innerHTML = elapsed;
+	}, 100);
+
+	setInterval(logic, 1000/speed);
 })();
