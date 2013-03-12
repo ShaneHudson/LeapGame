@@ -48,5 +48,5 @@ var Init = (function() {
 		document.getElementById('timer').innerHTML = elapsed;
 	}, 100);
 
-	setInterval(logic, 1000/speed);
+	setInterval(logic, 1000/60);
 })();

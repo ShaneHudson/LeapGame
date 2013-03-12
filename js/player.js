@@ -34,7 +34,7 @@ var Player = (function() {
 	}
 
 	function draw() {
-		ctx.drawImage(img, posX, posY, 30, 30);
+		ctx.drawImage(img, posX, posY, 40, 40);
 	}
 	
 	function pos() {

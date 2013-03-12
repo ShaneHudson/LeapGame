@@ -8,7 +8,7 @@ var Map = (function() {
 			if (objects[i] != null) {
 				objects[i].x--;
 				ctx.drawImage(img, objects[i].x, objects[i].y);
-				if (objects[i].x < -50) {
+				if (objects[i].x < -128) {
 					delete objects[i];
 				}
 			}
@@ -16,7 +16,7 @@ var Map = (function() {
 		if (getRandomBool()) {
 			i = objects.length;
 			objects[i] = new Object();
-			objects[i].x = (canvas.width + 10);
+			objects[i].x = canvas.width;
 			objects[i].y = getRandomInt(0, canvas.height);
 		}	
 	}
@@ -38,7 +38,7 @@ var Map = (function() {
 	}
 
 	function getRandomBool() {
-		if (getRandomInt(0, (30000 /canvas.height)) == 1) {
+		if (getRandomInt(0, (60000 /canvas.height)) == 1) {
 			return true;
 		} else {
 			return false;
