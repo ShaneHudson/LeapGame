@@ -8,7 +8,7 @@
 
 
 var canvas = document.querySelector('#game');
-canvas.height = window.innerHeight;
+canvas.height = (window.innerHeight-20);
 canvas.width = window.innerWidth;
 
 var userX, userY;
