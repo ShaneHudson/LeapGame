@@ -1,12 +1,13 @@
 var Map = (function() {
 	var objects = new Array();
+	var img = new Image();
+	img.src = 'asteroid.png';
 
 	function draw() {
 		for (i=0; i<objects.length; i++) {
 			if (objects[i] != null) {
-				ctx.fillStyle = "#ff0000";
 				objects[i].x--;
-				ctx.fillRect(objects[i].x, objects[i].y, 50, 50);
+				ctx.drawImage(img, objects[i].x, objects[i].y);
 				if (objects[i].x < -50) {
 					delete objects[i];
 				}
@@ -23,7 +24,7 @@ var Map = (function() {
 	function collide(x, y) {
 		for (i=0; i<objects.length; i++) {
 			if (objects[i] != null) {
-				if ((objects[i].x < x && (objects[i].x + 50) > x) && (objects[i].y < y && (objects[i].y + 50) > y)) {
+				if ((objects[i].x < x && (objects[i].x + 100) > x) && (objects[i].y < y && (objects[i].y + 100) > y)) {
 					return true;
 					break;
 				}
@@ -37,7 +38,7 @@ var Map = (function() {
 	}
 
 	function getRandomBool() {
-		if (getRandomInt(0, (40000 /canvas.height)) == 1) {
+		if (getRandomInt(0, (30000 /canvas.height)) == 1) {
 			return true;
 		} else {
 			return false;
