@@ -1,13 +1,16 @@
 var Map = (function() {
+	var asteroids = new Array();
+	for (i=0; i<9; i++) {
+		asteroids[i] = new Image();
+		asteroids[i].src = 'asteroid_'+(i+1)+'.png';
+	}
 	var objects = new Array();
-	var img = new Image();
-	img.src = 'asteroid.png';
 
 	function draw() {
 		for (i=0; i<objects.length; i++) {
 			if (objects[i] != null) {
 				objects[i].x--;
-				ctx.drawImage(img, objects[i].x, objects[i].y);
+				ctx.drawImage(asteroids[objects[i].img], objects[i].x, objects[i].y, 120, 120);
 				if (objects[i].x < -128) {
 					delete objects[i];
 				}
@@ -18,6 +21,7 @@ var Map = (function() {
 			objects[i] = new Object();
 			objects[i].x = canvas.width;
 			objects[i].y = getRandomInt(0, canvas.height);
+			objects[i].img = getRandomInt(0, 8);
 		}	
 	}
 	
